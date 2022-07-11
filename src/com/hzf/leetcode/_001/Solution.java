@@ -1,4 +1,4 @@
-package com.hzf._001;
+package com.hzf.leetcode._001;
 
 import java.util.Arrays;
 import java.util.HashMap;

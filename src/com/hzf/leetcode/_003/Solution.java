@@ -1,4 +1,4 @@
-package com.hzf._003;
+package com.hzf.leetcode._003;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.hzf._002;
+package com.hzf.leetcode._002;
 
 public class ListNode {
      int val;

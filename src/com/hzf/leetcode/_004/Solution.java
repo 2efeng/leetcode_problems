@@ -1,4 +1,4 @@
-package com.hzf._004;
+package com.hzf.leetcode._004;
 
 /**
  * Median Of Two Sorted Arrays
@@ -37,24 +37,52 @@ public class Solution {
         System.out.println(solution.findMedianSortedArrays(new int[]{1, 3}, new int[]{2, 7}));
     }
 
+    //快速排序合并两个数组
+    //第88题的合并数组
+
+
+    //二分查找
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        double medianNum1 = 0, medianNum2 = 0;
-        if (nums1.length % 2 == 0 && nums1.length != 0) {
-            medianNum1 = (nums1[nums1.length / 2] + nums1[nums1.length / 2 - 1]) / 2.0;
-        }
-        if (nums1.length % 2 == 1) {
-            medianNum1 = nums1[nums1.length / 2];
-        }
-        if (nums2.length % 2 == 0 && nums2.length != 0) {
-            medianNum2 = (nums2[nums2.length / 2] + nums2[nums2.length / 2 - 1]) / 2.0;
-        }
-        if (nums2.length % 2 == 1) {
-            medianNum2 = nums2[nums2.length / 2];
+
+        if (nums1.length > nums2.length) {
+            int[] temp = nums1;
+            nums1 = nums2;
+            nums2 = temp;
         }
 
-        if (medianNum1 == 0) return medianNum2;
-        if (medianNum2 == 0) return medianNum1;
-        return (medianNum1 + medianNum2) / 2.0;
+        int m = nums1.length;
+        int n = nums2.length;
+        int totalLeft = (m + n + 1) / 2;
+
+        int left = 0;
+        int right = m;
+
+        //交叉比较 同时满足
+        //nums1[i - 1] <= nums2[j]
+        //nums2[j - 1] <= nums1[i]
+
+        while (left < right) {
+            int i = (right + left) / 2;
+            int j = totalLeft - i;
+            if (nums1[i - 1] > nums2[j]) {
+                //[left ,i-1]
+                right = i - 1;
+            } else {
+                //[i, right]
+                left = i;
+            }
+        }
+
+        int i = left;
+        int j = totalLeft - i;
+
+        int nums1LeftMax = i == 0 ? Integer.MIN_VALUE : nums1[i - 1];
+        int nums1RightMin = i == m ? Integer.MAX_VALUE : nums1[i];
+        int nums2LeftMax = j == 0 ? Integer.MIN_VALUE : nums2[j - 1];
+        int nums2RightMin = j == n ? Integer.MAX_VALUE : nums2[j];
+
+
+        return  0;
     }
 
 }

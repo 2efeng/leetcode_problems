@@ -1,4 +1,4 @@
-package com.hzf._002AddTwoNumbers;
+package com.hzf._002;
 
 public class ListNode {
      int val;

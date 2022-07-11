@@ -1,11 +1,10 @@
-package com.hzf._003LongestSubstringWithoutRepeatingCharacters;
+package com.hzf._003;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
+ * Longest Substring Without Repeating Characters
  * 3. 无重复字符的最长子串（中等）
  * 给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。
  * <p>

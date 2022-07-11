@@ -1,6 +1,7 @@
-package com.hzf._004MedianOfTwoSortedArrays;
+package com.hzf._004;
 
 /**
+ * Median Of Two Sorted Arrays
  * 4. 寻找两个正序数组的中位数(困难)
  * <p>
  * 给定两个大小分别为 m 和 n 的正序（从小到大）数组nums1 和nums2。请你找出并返回这两个正序数组的 中位数 。

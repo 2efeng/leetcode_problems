@@ -30,7 +30,7 @@ public class Solution {
         // 2.50000  合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
         System.out.println(solution.findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4}));
 
-        // 2.50000  合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
+        // 1.0
         System.out.println(solution.findMedianSortedArrays(new int[]{}, new int[]{1}));
 
         // 2.50000  合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
@@ -43,7 +43,6 @@ public class Solution {
 
     //二分查找
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
         if (nums1.length > nums2.length) {
             int[] temp = nums1;
             nums1 = nums2;
@@ -57,13 +56,12 @@ public class Solution {
         int left = 0;
         int right = m;
 
-        //交叉比较 同时满足
-        //nums1[i - 1] <= nums2[j]
-        //nums2[j - 1] <= nums1[i]
+        //交叉比较 同时满足 nums1[i - 1] <= nums2[j] || nums2[j - 1] <= nums1[i]
 
         while (left < right) {
-            int i = (right + left) / 2;
+            int i = (right + left + 1) / 2;
             int j = totalLeft - i;
+            //缩小区间
             if (nums1[i - 1] > nums2[j]) {
                 //[left ,i-1]
                 right = i - 1;
@@ -71,6 +69,7 @@ public class Solution {
                 //[i, right]
                 left = i;
             }
+
         }
 
         int i = left;
@@ -80,9 +79,10 @@ public class Solution {
         int nums1RightMin = i == m ? Integer.MAX_VALUE : nums1[i];
         int nums2LeftMax = j == 0 ? Integer.MIN_VALUE : nums2[j - 1];
         int nums2RightMin = j == n ? Integer.MAX_VALUE : nums2[j];
-
-
-        return  0;
+        if ((m + n) % 2 == 1) {
+            return Math.max(nums1LeftMax, nums2LeftMax);
+        }
+        return (double) (Math.max(nums1LeftMax, nums2LeftMax) + Math.min(nums1RightMin, nums2RightMin)) / 2;
     }
 
 }

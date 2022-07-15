@@ -14,10 +14,10 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.longestPalindrome("babad"));//bab
-        System.out.println(solution.longestPalindrome("cbbd"));//bb
-        System.out.println(solution.longestPalindrome("xaabacxcabaaxcabaax"));//xaabacxcabaax
-        System.out.println(solution.longestPalindrome("ccc"));//ccc
+        System.out.println(solution.longestPalindrome3("babad"));//bab
+        System.out.println(solution.longestPalindrome3("cbbd"));//bb
+        System.out.println(solution.longestPalindrome3("xaabacxcabaaxcabaax"));//xaabacxcabaax
+        System.out.println(solution.longestPalindrome3("ccc"));//ccc
     }
 
 
@@ -66,21 +66,39 @@ public class Solution {
 
 
     /**
+     * centerSpread
      * 中心扩散
      */
     public String longestPalindrome3(String s) {
         if (s.length() == 1) return s;
-
-
-
-
-
-        return "";
+        int maxLen = 0;
+        int centerIndex = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            int odd = centerSpread(s, i, i);
+            int even = centerSpread(s, i, i + 1);
+            int max = Math.max(odd, even);
+            if (max > maxLen) {
+                centerIndex = i;
+                maxLen = max;
+            }
+        }
+        centerIndex = centerIndex - (maxLen - 1) / 2;
+        return s.substring(centerIndex, maxLen + centerIndex);
     }
 
-
-
-
+    //返回长度
+    private int centerSpread(String s, int left, int right) {
+        int len = s.length();
+        while (left >= 0 && right < len) {
+            if (s.charAt(left) == s.charAt(right)) {
+                left--;
+                right++;
+            } else {
+                break;
+            }
+        }
+        return right - left - 1;
+    }
 
 
 }

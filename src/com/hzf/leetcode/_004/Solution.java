@@ -85,4 +85,32 @@ public class Solution {
         return (double) (Math.max(nums1LeftMax, nums2LeftMax) + Math.min(nums1RightMin, nums2RightMin)) / 2;
     }
 
+
+    //合并有序数组
+    public int[] mergeArr(int[] nums1, int[] nums2) {
+        if (nums1.length == 0) return nums2;
+        if (nums2.length == 0) return nums1;
+        int[] res = new int[nums1.length + nums2.length];
+        int left = nums1.length - 1;
+        int right = nums2.length - 1;
+        int index = res.length - 1;
+        while (left > -1 || right > -1) {
+            if (left == -1) {
+                res[index--] = nums2[right--];
+                continue;
+            }
+            if (right == -1) {
+                res[index--] = nums1[left--];
+                continue;
+            }
+            if (nums1[left] > nums2[right]) {
+                res[index--] = nums1[left--];
+            } else {
+                res[index--] = nums2[right--];
+            }
+        }
+        return res;
+    }
+
+
 }

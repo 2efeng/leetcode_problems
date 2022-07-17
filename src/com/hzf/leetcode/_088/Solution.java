@@ -65,7 +65,7 @@ public class Solution {
     }
 
 
-    //原理
+
     public int[] mergeArr(int[] nums1, int[] nums2) {
         if (nums1.length == 0) return nums2;
         if (nums2.length == 0) return nums1;

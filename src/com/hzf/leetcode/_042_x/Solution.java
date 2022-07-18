@@ -1,4 +1,4 @@
-package com.hzf.leetcode._042;
+package com.hzf.leetcode._042_x;
 
 /**
  * 42. 接雨水（困难）

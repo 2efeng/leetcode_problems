@@ -24,7 +24,6 @@ public class MyCalendarTwo {
 
 
     public static void main(String[] args) {
-        //[[],]
         MyCalendarTwo calendar = new MyCalendarTwo();
         System.out.println(calendar.book(28, 46));//true
         System.out.println(calendar.book(9, 21));//true
@@ -36,11 +35,10 @@ public class MyCalendarTwo {
         System.out.println(calendar.book(1, 12));//true
         System.out.println(!calendar.book(40, 50));//false
         System.out.println(!calendar.book(31, 44));//false
-
     }
 
-    public List<List<Integer>> calendarList;
-    public List<List<Integer>> repetitionList;
+    private final List<List<Integer>> calendarList;
+    private final List<List<Integer>> repetitionList;
 
     public MyCalendarTwo() {
         calendarList = new ArrayList<>();

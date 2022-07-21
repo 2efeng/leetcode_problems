@@ -1,4 +1,4 @@
-package com.hzf.sort;
+package com.hzf.sort.quick;
 
 import java.util.Arrays;
 

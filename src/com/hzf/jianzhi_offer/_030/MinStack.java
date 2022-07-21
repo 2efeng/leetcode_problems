@@ -1,9 +1,6 @@
 package com.hzf.jianzhi_offer._030;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 /**
  * 剑指 Offer 30. 包含min函数的栈
@@ -16,25 +13,26 @@ import java.util.Map;
  * <a href="https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/">...</a>
  */
 public class MinStack {
-
     private final LinkedList<Integer> stack;
+    private final LinkedList<Integer> minStack;
+    private int min = Integer.MAX_VALUE;
 
-    private Map<Integer, Integer> minStack;
-
-    /**
-     * initialize your data structure here.
-     */
     public MinStack() {
         stack = new LinkedList<>();
-        minStack = new LinkedHashMap<>();
+        minStack = new LinkedList<>();
     }
 
     public void push(int x) {
+        min = Math.min(x, min);
+        minStack.push(min);
         stack.push(x);
     }
 
     public void pop() {
         stack.pop();
+        minStack.pop();
+        if (minStack.isEmpty()) min = Integer.MAX_VALUE;
+        else min = minStack.peek();
     }
 
     public int top() {
@@ -43,7 +41,7 @@ public class MinStack {
     }
 
     public int min() {
-        return 0;
+        return min;
     }
 
 }
